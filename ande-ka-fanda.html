@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ande ka Fanda - The Hotellier Menu</title>
+  <meta name="theme-color" content="#121212">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Preload critical resources -->
+  <link rel="preload" href="styles.css" as="style">
+  <link rel="preload" href="theme.js" as="script">
+  
+  <!-- Preload first few images for faster loading -->
+  <link rel="preload" href="./img/Ande_ka_Fanda/omlet-pav.jpg" as="image">
+  <link rel="preload" href="./img/Ande_ka_Fanda/Egg Bhurji.jpg" as="image">
+</head>
+<body>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js').catch(() => {});
+      });
+    }
+  </script>
+  <script defer src="theme.js"></script>
+
+  <div class="container">
+    <h1>🥚 Ande ka Fanda</h1>
+
+    <div class="menu-item" onclick="openModal('Omlet Pao', './img/Ande_ka_Fanda/omlet-pav.jpg', 'Delicious omelette served with soft bread.', '₹70')">
+      <div class="item-left">
+        <img loading="lazy" width="120" height="120" src="./img/Ande_ka_Fanda/omlet-pav.jpg" alt="Omlet Pao">
+        <span class="item-name">OMLET PAO</span>
+      </div>
+      <span class="item-price">₹70</span>
+    </div>
+
+    <div class="menu-item" onclick="openModal('Anda Bhurji', './img/Ande_ka_Fanda/Egg Bhurji.jpg', 'Spicy scrambled eggs with onions and spices.', '₹60')">
+      <div class="item-left">
+        <img loading="lazy" width="120" height="120" src="./img/Ande_ka_Fanda/Egg Bhurji.jpg" alt="Anda Bhurji">
+        <span class="item-name">ANDA BHURJI</span>
+      </div>
+      <span class="item-price">₹60</span>
+    </div>
+
+    <div class="menu-item" onclick="openModal('Boiled Egg Plate', './img/Ande_ka_Fanda/Boiled egg plate.jpg', 'Perfectly boiled eggs served with salt and pepper.', '₹30')">
+      <div class="item-left">
+        <img loading="lazy" width="120" height="120" src="./img/Ande_ka_Fanda/Boiled egg plate.jpg" alt="Boiled Egg Plate">
+        <span class="item-name">BOILED EGG PLATE</span>
+      </div>
+      <span class="item-price">₹30</span>
+    </div>
+
+    <div class="menu-item" onclick="openModal('Anda Ghotala', './img/Ande_ka_Fanda/Anda Ghotalaa.jpg', 'Spicy egg curry with rich gravy and spices.', '₹99')">
+      <div class="item-left">
+        <img loading="lazy" width="120" height="120" src="./img/Ande_ka_Fanda/Anda Ghotalaa.jpg" alt="Anda Ghotala">
+        <span class="item-name">ANDA GHOTALA</span>
+      </div>
+      <span class="item-price">₹99</span>
+    </div>
+
+    <div class="menu-item" onclick="openModal('Anda Curry', './img/Ande_ka_Fanda/Anda Curry Recipe.jpg', 'Traditional egg curry with aromatic spices.', '₹99')">
+      <div class="item-left">
+        <img loading="lazy" width="120" height="120" src="./img/Ande_ka_Fanda/Anda Curry Recipe.jpg" alt="Anda Curry">
+        <span class="item-name">ANDA CURRY</span>
+      </div>
+      <span class="item-price">₹99</span>
+    </div>
+
+    <div class="menu-item" onclick="openModal('Anda Masala', './img/Ande_ka_Fanda/Anda Masala.jpg', 'Spicy masala eggs with onions and tomatoes.', '₹99')">
+      <div class="item-left">
+        <img loading="lazy" width="120" height="120" src="./img/Ande_ka_Fanda/Anda Masala.jpg" alt="Anda Masala">
+        <span class="item-name">ANDA MASALA</span>
+      </div>
+      <span class="item-price">₹99</span>
+    </div>
+
+    <a href="index.html" class="back-btn">⬅ Back to Menu</a>
+  </div>
+
+  <!-- Modal -->
+  <div id="menuModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <img id="modalImg" src="" alt="Dish" width="400" height="300">
+      <h2 id="modalTitle"></h2>
+      <p id="modalDesc"></p>
+      <h3 id="modalPrice" style="color:#00ff99;"></h3>
+    </div>
+  </div>
+
+  <script>
+    // Fade-in animation for each item
+    document.querySelectorAll('.menu-item').forEach((item, index) => {
+      setTimeout(() => {
+        item.style.opacity = 1;
+        item.style.transform = "scale(1)";
+      }, index * 200);
+    });
+
+    function openModal(title, img, desc, price) {
+      document.getElementById('modalTitle').innerText = title;
+      document.getElementById('modalImg').src = img;
+      document.getElementById('modalDesc').innerText = desc;
+      document.getElementById('modalPrice').innerText = price;
+      document.getElementById('menuModal').style.display = "block";
+    }
+    function closeModal() { document.getElementById('menuModal').style.display = "none"; }
+  </script>
+</body>
+</html>

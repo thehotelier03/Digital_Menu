@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Hotelier Menu</title>
+  <meta name="theme-color" content="#121212">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Preload critical resources -->
+  <link rel="preload" href="styles.css" as="style">
+  <link rel="preload" href="theme.js" as="script">
+  <link rel="dns-prefetch" href="//source.unsplash.com">
+</head>
+<body>
+
+  <script defer src="theme.js"></script>
+
+  <script>
+    // Performance optimizations
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js').catch(() => {});
+      });
+    }
+    
+    // Preload critical images
+    const criticalImages = [
+      './img/Breakfast/kanda poha.jpg',
+      './img/Ande_ka_Fanda/omlet-pav.jpg',
+      './img/Veg Main Course/Rajma Masala.jpg'
+    ];
+    
+    criticalImages.forEach(src => {
+      const img = new Image();
+      img.src = src;
+    });
+  </script>
+
+  <div class="container container--narrow container--center" style="padding: 50px 20px;">
+    <h1 style="font-size: 2.2rem; margin-bottom: 30px;">🍴 The Hotelier Menu</h1>
+
+    <button class="menu-btn" onclick="location.href='breakfast.html'">🍳 Breakfast</button>
+    <button class="menu-btn" onclick="location.href='ande-ka-fanda.html'">🥚 Ande ka Fanda</button>
+    <button class="menu-btn" onclick="location.href='veg-main-course.html'">🥘Veg Main Course</button>
+    <button class="menu-btn" onclick="location.href='non-veg-main-course.html'">🍖 Non-Veg Main Course</button>
+    <button class="menu-btn" onclick="location.href='roti.html'">🥙 Roti Section</button>
+    <button class="menu-btn" onclick="location.href='rice-bowl.html'">🍚 Rice Bowl</button>
+
+    <div class="footer">
+      📱 Scan the QR code to open this menu anytime! <br>
+      <em>Thank you for visiting The Hotelier ❤️</em>
+    </div>
+  </div>
+
+</body>
+</html>

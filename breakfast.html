@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Breakfast - The Hotellier Menu</title>
+  <meta name="theme-color" content="#121212">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Preload critical resources -->
+  <link rel="preload" href="styles.css" as="style">
+  <link rel="preload" href="theme.js" as="script">
+  
+  <!-- Preload first few images for faster loading -->
+  <link rel="preload" href="./img/Breakfast/kanda poha.jpg" as="image">
+  <link rel="preload" href="./img/Breakfast/upama.jpg" as="image">
+</head>
+<body>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js').catch(() => {});
+      });
+    }
+  </script>
+  <script defer src="theme.js"></script>
+
+  <div class="container">
+    <h1>🍳 Breakfast</h1>
+
+    <!-- Menu Items -->
+    <div class="menu-item" onclick="openModal('Kanda Poha', './img/Breakfast/kanda poha.jpg', 'Delicious flattened rice cooked with onion, spices & peanuts.', '₹40')">
+      <div class="item-left">
+        <img loading="lazy" width="88" height="88" src="./img/Breakfast/kanda poha.jpg" alt="Kanda Poha" decoding="async" fetchpriority="high">
+        <span class="item-name">KANDA POHA</span>
+      </div>
+      <span class="item-price">₹40</span>
+    </div>
+
+    <div class="menu-item" onclick="openModal('Upama', './img/Breakfast/upama.jpg', 'A soft and savory dish made from semolina, vegetables & spices.', '₹40')">
+      <div class="item-left">
+        <img loading="lazy" width="88" height="88" src="./img/Breakfast/upama.jpg" alt="Upama" decoding="async">
+        <span class="item-name">UPAMA</span>
+      </div>
+      <span class="item-price">₹40</span>
+    </div>
+
+    <div class="menu-item" onclick="openModal('Shabudana Wada', './img/Breakfast/shabudana wada.jpg', 'Crispy fried patties made with sago, potato & peanuts.', '₹60')">
+      <div class="item-left">
+        <img loading="lazy" width="88" height="88" src="./img/Breakfast/shabudana wada.jpg" alt="Shabudana Wada" decoding="async">
+        <span class="item-name">SHABUDANA WADA</span>
+      </div>
+      <span class="item-price">₹60</span>
+    </div>
+
+    <div class="menu-item" onclick="openModal('Shabudana Khichadi', './img/Breakfast/Sabudana Khichdi.jpg', 'Healthy dish made with sago pearls, peanuts & mild spices.', '₹70')">
+      <div class="item-left">
+        <img loading="lazy" width="88" height="88" src="./img/Breakfast/Sabudana Khichdi.jpg" alt="Shabudana Khichadi" decoding="async">
+        <span class="item-name">SHABUDANA KHICHADI</span>
+      </div>
+      <span class="item-price">₹70</span>
+    </div>
+
+    <div class="menu-item" onclick="openModal('Chole Bhature', './img/Breakfast/chole bhature.jpg', 'North Indian classic – spicy chickpeas with fluffy fried bread.', '₹70')">
+      <div class="item-left">
+        <img loading="lazy" width="88" height="88" src="./img/Breakfast/chole bhature.jpg" alt="Chole Bhature" decoding="async">
+        <span class="item-name">CHOLE BHATURE</span>
+      </div>
+      <span class="item-price">₹70</span>
+    </div>
+
+    <div class="menu-item" onclick="openModal('Kanda Bhaji', './img/Breakfast/Kanda Bhaji.jpg', 'Crispy onion fritters, best enjoyed with chutney & tea.', '₹40')">
+      <div class="item-left">
+        <img loading="lazy" width="88" height="88" src="./img/Breakfast/Kanda Bhaji.jpg" alt="Kanda Bhaji" decoding="async">
+        <span class="item-name">KANDA BHAJI</span>
+      </div>
+      <span class="item-price">₹40</span>
+    </div>
+
+    <div class="menu-item" onclick="openModal('Vada Pav', './img/Breakfast/Vada pav.jpg', 'Mumbai\'s favorite street food – spicy potato fritter in a bun.', '₹20')">
+      <div class="item-left">
+        <img loading="lazy" width="88" height="88" src="./img/Breakfast/Vada pav.jpg" alt="Vada Pav" decoding="async">
+        <span class="item-name">VADA PAV</span>
+      </div>
+      <span class="item-price">₹20</span>
+    </div>
+    <a href="index.html" class="back-btn">⬅ Back to Menu</a>
+  </div>
+
+  <!-- Modal -->
+  <div id="menuModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <img id="modalImg" src="" alt="Dish" width="400" height="300" decoding="async">
+      <h2 id="modalTitle"></h2>
+      <p id="modalDesc"></p>
+      <h3 id="modalPrice" style="color:#00ff99;"></h3>
+    </div>
+  </div>
+
+  <script>
+    // Fade-in animation for each item
+    document.querySelectorAll('.menu-item').forEach((item, index) => {
+      setTimeout(() => {
+        item.style.opacity = 1;
+        item.style.transform = "scale(1)";
+      }, index * 200);
+    });
+
+    function openModal(title, img, desc, price) {
+      document.getElementById('modalTitle').innerText = title;
+      document.getElementById('modalImg').src = img;
+      document.getElementById('modalDesc').innerText = desc;
+      document.getElementById('modalPrice').innerText = price;
+      document.getElementById('menuModal').style.display = "block";
+    }
+    function closeModal() { document.getElementById('menuModal').style.display = "none"; }
+  </script>
+
+</body>
+</html>

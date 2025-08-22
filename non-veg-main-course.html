@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Non-Veg Main Course - The Hotellier Menu</title>
+  <meta name="theme-color" content="#121212">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Preload critical resources -->
+  <link rel="preload" href="styles.css" as="style">
+  <link rel="preload" href="theme.js" as="script">
+  
+  <!-- Preload first few images for faster loading -->
+  <link rel="preload" href="./img/Non-Veg Main Course/Chicken Masala.jpg" as="image">
+  <link rel="preload" href="./img/Non-Veg Main Course/Kharda Chicken.jpg" as="image">
+</head>
+<body>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js').catch(() => {});
+      });
+    }
+  </script>
+  <script defer src="theme.js"></script>
+
+  <div class="container">
+    <h1>🍗 Non-Veg Main Course</h1>
+
+    <div class="menu-item" onclick="openModal('Chicken Masala', './img/Non-Veg Main Course/Chicken Masala.jpg', 'Spicy chicken masala with rich gravy and aromatic spices.', '₹159')">
+      <div class="item-left">
+        <img loading="lazy" width="120" height="120" src="./img/Non-Veg Main Course/Chicken Masala.jpg" alt="Chicken Masala">
+        <span class="item-name">CHICKEN MASALA</span>
+      </div>
+      <span class="item-price">₹159</span>
+    </div>
+
+    <div class="menu-item" onclick="openModal('Kharda Chicken', './img/Non-Veg Main Course/Kharda Chicken.jpg', 'Extra spicy chicken preparation with hot spices.', '₹179')">
+      <div class="item-left">
+        <img loading="lazy" width="120" height="120" src="./img/Non-Veg Main Course/Kharda Chicken.jpg" alt="Kharda Chicken">
+        <span class="item-name">KHARDA CHICKEN</span>
+      </div>
+      <span class="item-price">₹179</span>
+    </div>
+
+    <div class="menu-item" onclick="openModal('Chicken Curry', './img/Non-Veg Main Course/Chicken Curry.jpg', 'Traditional chicken curry with rice, a perfect combination.', '₹139')">
+      <div class="item-left">
+        <img loading="lazy" width="120" height="120" src="./img/Non-Veg Main Course/Chicken Curry.jpg" alt="Chicken Curry">
+        <span class="item-name">CHICKEN CURRY</span>
+      </div>
+      <span class="item-price">₹139</span>
+    </div>
+
+    <div class="menu-item" onclick="openModal('Kadhai Chicken', './img/Non-Veg Main Course/Kadai Chicken.jpg', 'Kadhai style chicken with bell peppers and spices.', '₹159')">
+      <div class="item-left">
+        <img loading="lazy" width="120" height="120" src="./img/Non-Veg Main Course/Kadai Chicken.jpg" alt="Kadhai Chicken">
+        <span class="item-name">KHADAI CHICKEN</span>
+      </div>
+      <span class="item-price">₹159</span>
+    </div>
+
+    <div class="menu-item" onclick="openModal('Chicken Kolhapuri', './img/Non-Veg Main Course/Chicken Kolhapuri.jpg', 'Spicy Kolhapuri style chicken with authentic flavors.', '₹159')">
+      <div class="item-left">
+        <img loading="lazy" width="120" height="120" src="./img/Non-Veg Main Course/Chicken Kolhapuri.jpg" alt="Chicken Kolhapuri">
+        <span class="item-name">CHICKEN KOLHAPURI</span>
+      </div>
+      <span class="item-price">₹159</span>
+    </div>
+
+    <div class="menu-item" onclick="openModal('Butter Chicken', './img/Non-Veg Main Course/Butter Chicken.jpg', 'Creamy and rich butter chicken with mild spices.', '₹179')">
+      <div class="item-left">
+        <img loading="lazy" width="120" height="120" src="./img/Non-Veg Main Course/Butter Chicken.jpg" alt="Butter Chicken">
+        <span class="item-name">BUTTER CHICKEN</span>
+      </div>
+      <span class="item-price">₹179</span>
+    </div>
+
+    <a href="index.html" class="back-btn">⬅ Back to Menu</a>
+  </div>
+
+  <!-- Modal -->
+  <div id="menuModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <img id="modalImg" src="" alt="Dish" width="400" height="300">
+      <h2 id="modalTitle"></h2>
+      <p id="modalDesc"></p>
+      <h3 id="modalPrice" style="color:#00ff99;"></h3>
+    </div>
+  </div>
+
+  <script>
+    // Fade-in animation for each item
+    document.querySelectorAll('.menu-item').forEach((item, index) => {
+      setTimeout(() => {
+        item.style.opacity = 1;
+        item.style.transform = "scale(1)";
+      }, index * 200);
+    });
+
+    function openModal(title, img, desc, price) {
+      document.getElementById('modalTitle').innerText = title;
+      document.getElementById('modalImg').src = img;
+      document.getElementById('modalDesc').innerText = desc;
+      document.getElementById('modalPrice').innerText = price;
+      document.getElementById('menuModal').style.display = "block";
+    }
+    function closeModal() { document.getElementById('menuModal').style.display = "none"; }
+  </script>
+</body>
+</html>

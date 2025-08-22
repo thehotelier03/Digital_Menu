@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Veg Main Course - The Hotellier Menu</title>
+  <meta name="theme-color" content="#121212">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Preload critical resources -->
+  <link rel="preload" href="styles.css" as="style">
+  <link rel="preload" href="theme.js" as="script">
+  
+  <!-- Preload first few images for faster loading -->
+  <link rel="preload" href="./img/Veg Main Course/Rajma Masala.jpg" as="image">
+  <link rel="preload" href="./img/Veg Main Course/Akkha Masoor.jpg" as="image">
+</head>
+<body>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js').catch(() => {});
+      });
+    }
+  </script>
+  <script defer src="theme.js"></script>
+
+  <div class="container">
+    <h1>🍲 Veg Main Course</h1>
+
+    <div class="menu-section">
+      
+
+      <!-- Menu Items -->
+      <div class="menu-item" onclick="openModal('Rajama Masala', './img/Veg Main Course/Rajma Masala.jpg', 'Spicy kidney bean curry with rich gravy and aromatic spices.', '₹99')">
+        <div class="item-left">
+          <img loading="lazy" width="88" height="88" src="./img/Veg Main Course/Rajma Masala.jpg" alt="Rajama Masala" decoding="async" fetchpriority="high">
+          <span class="item-name">RAJAMA MASALA</span>
+        </div>
+        <span class="item-price">₹99</span>
+      </div>
+
+      <div class="menu-item" onclick="openModal('Akkha Masur', './img/Veg Main Course/Akkha Masoor.jpg', 'Whole red lentils cooked with spices and herbs.', '₹99')">
+        <div class="item-left">
+          <img loading="lazy" width="88" height="88" src="./img/Veg Main Course/Akkha Masoor.jpg" alt="Akkha Masur" decoding="async">
+          <span class="item-name">AKKHA MASUR</span>
+        </div>
+        <span class="item-price">₹99</span>
+      </div>
+
+      <div class="menu-item" onclick="openModal('Amritsari Chole', './img/Veg Main Course/Amrisari Chole.jpg', 'Punjabi style chickpea curry with authentic flavors.', '₹99')">
+        <div class="item-left">
+          <img loading="lazy" width="88" height="88" src="./img/Veg Main Course/Amrisari Chole.jpg" alt="Amritsari Chole" decoding="async">
+          <span class="item-name">AMRITSARI CHOLE</span>
+        </div>
+        <span class="item-price">₹99</span>
+      </div>
+
+      <div class="menu-item" onclick="openModal('Dal Tadka', './img/Veg Main Course/Dal Tadka.jpg', 'Tempered yellow lentils with aromatic spices.', '₹79')">
+        <div class="item-left">
+          <img loading="lazy" width="88" height="88" src="./img/Veg Main Course/Dal Tadka.jpg" alt="Dal Tadka" decoding="async">
+          <span class="item-name">DAL TADKA</span>
+        </div>
+        <span class="item-price">₹79</span>
+      </div>
+
+      <div class="menu-item" onclick="openModal('Paneer Butter Masala', './img/Veg Main Course/Paneer Butter Masala.jpg', 'Creamy paneer curry in rich tomato gravy.', '₹139')">
+        <div class="item-left">
+          <img loading="lazy" width="88" height="88" src="./img/Veg Main Course/Paneer Butter Masala.jpg" alt="Paneer Butter Masala" decoding="async">
+          <span class="item-name">PANEER BUTTER MASALA</span>
+        </div>
+        <span class="item-price">₹139</span>
+      </div>
+
+      <div class="menu-item" onclick="openModal('Paneer Lababdar', './img/Veg Main Course/Paneer Lababdar.jpg', 'Rich and creamy paneer curry with cashew gravy.', '₹129')">
+        <div class="item-left">
+          <img loading="lazy" width="88" height="88" src="./img/Veg Main Course/Paneer Lababdar.jpg" alt="Paneer Lababdar" decoding="async">
+          <span class="item-name">PANEER LABABDAR</span>
+        </div>
+        <span class="item-price">₹129</span>
+      </div>
+
+      <div class="menu-item" onclick="openModal('Kadhai Paneer', './img/Veg Main Course/Kadai Paneer.jpg', 'Paneer cooked with bell peppers in kadhai style.', '₹129')">
+        <div class="item-left">
+          <img loading="lazy" width="88" height="88" src="./img/Veg Main Course/Kadai Paneer.jpg" alt="Kadhai Paneer" decoding="async">
+          <span class="item-name">KADHAI PANEER</span>
+        </div>
+        <span class="item-price">₹129</span>
+      </div>
+
+      <div class="menu-item" onclick="openModal('Mushroom Masala', './img/Veg Main Course/Mushroom masala.jpg', 'Spicy mushroom curry with rich masala gravy.', '₹129')">
+        <div class="item-left">
+          <img loading="lazy" width="88" height="88" src="./img/Veg Main Course/Mushroom masala.jpg" alt="Mushroom Masala" decoding="async">
+          <span class="item-name">MUSHROOM MASALA</span>
+        </div>
+        <span class="item-price">₹129</span>
+      </div>
+
+      <div class="menu-item" onclick="openModal('Kaju Curry', './img/Veg Main Course/Kaju Curry.jpg', 'Creamy cashew curry with rich gravy.', '₹139')">
+        <div class="item-left">
+          <img loading="lazy" width="88" height="88" src="./img/Veg Main Course/Kaju Curry.jpg" alt="Kaju Curry" decoding="async">
+          <span class="item-name">KAJU CURRY</span>
+        </div>
+        <span class="item-price">₹139</span>
+      </div>
+
+      <div class="menu-item" onclick="openModal('Veg Kolhapuri', './img/Veg Main Course/Veg Kolhapuri.jpg', 'Spicy mixed vegetable curry in Kolhapuri style.', '₹119')">
+        <div class="item-left">
+          <img loading="lazy" width="88" height="88" src="./img/Veg Main Course/Veg Kolhapuri.jpg" alt="Veg Kolhapuri" decoding="async">
+          <span class="item-name">VEG KOLHAPURI</span>
+        </div>
+        <span class="item-price">₹119</span>
+      </div>
+
+    </div>
+    <a href="index.html" class="back-btn">⬅ Back to Menu</a>
+  </div>
+
+  <!-- Modal -->
+  <div id="menuModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <img id="modalImg" src="" alt="Dish" width="400" height="300" decoding="async">
+      <h2 id="modalTitle"></h2>
+      <p id="modalDesc"></p>
+      <h3 id="modalPrice" style="color:#00ff99;"></h3>
+    </div>
+  </div>
+
+  <script>
+    // Fade-in animation
+    document.querySelectorAll('.menu-item').forEach((item, index) => {
+      setTimeout(() => {
+        item.style.opacity = 1;
+        item.style.transform = "scale(1)";
+      }, index * 200);
+    });
+
+    // Modal functions
+    function openModal(name, img, desc, price) {
+      document.getElementById('modalTitle').innerText = name;
+      document.getElementById('modalPrice').innerText = price;
+      document.getElementById('modalImg').src = img;
+      document.getElementById('modalDesc').innerText = desc;
+      document.getElementById('menuModal').style.display = "block";
+    }
+
+    function closeModal() {
+      document.getElementById('menuModal').style.display = "none";
+    }
+  </script>
+
+</body>
+</html>

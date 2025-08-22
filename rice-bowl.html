@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rice Bowl - The Hotellier Menu</title>
+  <meta name="theme-color" content="#121212">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Preload critical resources -->
+  <link rel="preload" href="styles.css" as="style">
+  <link rel="preload" href="theme.js" as="script">
+  
+  <!-- Preload first few images for faster loading -->
+  <link rel="preload" href="./img/Rice bowl/plain rice.jpg" as="image">
+  <link rel="preload" href="./img/Rice bowl/Jeera Rice.jpg" as="image">
+</head>
+<body>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js').catch(() => {});
+      });
+    }
+  </script>
+  <script defer src="theme.js"></script>
+
+  <div class="container">
+    <h1>🍚 Rice Bowl</h1>
+
+    <div class="menu-item" onclick="openModal('Plain Rice', './img/Rice bowl/plain rice.jpg', 'Simple and fluffy steamed basmati rice.', '₹30')">
+      <div class="item-left">
+        <img loading="lazy" width="120" height="120" src="./img/Rice bowl/plain rice.jpg" alt="Plain Rice">
+        <span class="item-name">PLAIN RICE</span>
+      </div>
+      <span class="item-price">₹30</span>
+    </div>
+
+    <div class="menu-item" onclick="openModal('Jeera Rice', './img/Rice bowl/Jeera Rice.jpg', 'Aromatic rice cooked with cumin seeds and spices.', '₹40')">
+      <div class="item-left">
+        <img loading="lazy" width="120" height="120" src="./img/Rice bowl/Jeera Rice.jpg" alt="Jeera Rice">
+        <span class="item-name">JEERA RICE</span>
+      </div>
+      <span class="item-price">₹40</span>
+    </div>
+
+    <div class="menu-item" onclick="openModal('Dal Khichadi', './img/Rice bowl/dal khichadi.jpg', 'Comforting rice and lentil porridge with mild spices.', '₹50')">
+      <div class="item-left">
+        <img loading="lazy" width="120" height="120" src="./img/Rice bowl/dal khichadi.jpg" alt="Dal Khichadi">
+        <span class="item-name">DAL KHICHADI</span>
+      </div>
+      <span class="item-price">₹50</span>
+    </div>
+
+    <div class="menu-item" onclick="openModal('Rajama Chawal', './img/Rice bowl/Rajma chawal.jpg', 'Rice served with kidney bean curry.', '₹60')">
+      <div class="item-left">
+        <img loading="lazy" width="120" height="120" src="./img/Rice bowl/Rajma chawal.jpg" alt="Rajama Chawal">
+        <span class="item-name">RAJAMA CHAWAL</span>
+      </div>
+      <span class="item-price">₹60</span>
+    </div>
+
+    <a href="index.html" class="back-btn">⬅ Back to Menu</a>
+  </div>
+
+  <!-- Modal -->
+  <div id="menuModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <img id="modalImg" src="" alt="Dish" width="400" height="300">
+      <h2 id="modalTitle"></h2>
+      <p id="modalDesc"></p>
+      <h3 id="modalPrice" style="color:#00ff99;"></h3>
+    </div>
+  </div>
+
+  <script>
+    // Fade-in animation for each item
+    document.querySelectorAll('.menu-item').forEach((item, index) => {
+      setTimeout(() => {
+        item.style.opacity = 1;
+        item.style.transform = "scale(1)";
+      }, index * 200);
+    });
+
+    function openModal(title, img, desc, price) {
+      document.getElementById('modalTitle').innerText = title;
+      document.getElementById('modalImg').src = img;
+      document.getElementById('modalDesc').innerText = desc;
+      document.getElementById('modalPrice').innerText = price;
+      document.getElementById('menuModal').style.display = "block";
+    }
+    function closeModal() { document.getElementById('menuModal').style.display = "none"; }
+  </script>
+</body>
+</html>
